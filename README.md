@@ -2,7 +2,7 @@
 
 My solutions for [Advent of Code 2025](https://adventofcode.com/2025).
 
-This project includes a utils library derived with AI from my [last year's solution](https://github.com/boh717/advent-of-code-2024).
+This project includes a utils library derived with AI from my [last year's solutions](https://github.com/boh717/advent-of-code-2024).
 
 All solutions, instead, are written by me.
 

@@ -1,5 +1,3 @@
-# Advent of Code 2025 - Task Runner
-
 # Add a new day (usage: just new-day 2)
 new-day day:
     #!/usr/bin/env bash
@@ -33,7 +31,7 @@ new-day day:
     
     # Create Rust file from template
     printf '%s\n' \
-        'use advent_of_code_2025::utils::*;' \
+        'use advent_of_code_2025::utils;' \
         'use std::time::Instant;' \
         '' \
         'fn main() {' \

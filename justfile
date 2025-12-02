@@ -35,7 +35,7 @@ new-day day:
         'use std::time::Instant;' \
         '' \
         'fn main() {' \
-        "    let input = read_file(\"src/inputs/input-day${DAY}.txt\");" \
+        "    let input = utils::read_file(\"src/inputs/input-day${DAY}.txt\");" \
         '' \
         '    let t = Instant::now();' \
         '    println!("Part 1: {} ({:?})", todo!(), t.elapsed());' \

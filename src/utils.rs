@@ -161,6 +161,21 @@ where
         .collect()
 }
 
+/// Reads a single line from a file and parses it as strings separated by a custom separator
+///
+/// # Example
+/// ```
+/// let items: Vec<String> = read_line_separated("src/inputs/input-day4.txt", ",");
+/// ```
+pub fn read_single_line_separated(path: &str, separator: &str) -> Vec<String> {
+    let content = read_file(path);
+    let first_line = content.lines().next().unwrap_or("");
+    first_line
+        .split(separator)
+        .map(|s| s.trim().to_string())
+        .collect()
+}
+
 // ============================================================================
 // Grid Reading Utilities
 // ============================================================================
@@ -227,4 +242,22 @@ pub fn get_grid_size(path: &str) -> GridSize {
         lines.len(),
         if lines.is_empty() { 0 } else { lines[0].len() },
     )
+}
+
+// ============================================================================
+// General Utilities
+// ============================================================================
+
+pub fn find_divisors(num: usize) -> Vec<usize> {
+    let mut divisors: Vec<usize> = Vec::new();
+    let up_to = (num as f64).sqrt() as usize;
+    for i in 1..=up_to {
+        if num % i == 0 {
+            divisors.push(i);
+            if i != num / i {
+                divisors.push(num / i);
+            }
+        }
+    }
+    divisors
 }

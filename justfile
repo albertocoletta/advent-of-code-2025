@@ -35,13 +35,21 @@ new-day day:
         'use std::time::Instant;' \
         '' \
         'fn main() {' \
-        "    let input = utils::read_file(\"src/inputs/input-day${DAY}.txt\");" \
+        "    let input = utils::read_lines(\"src/inputs/input-day${DAY}.txt\");" \
         '' \
         '    let t = Instant::now();' \
-        '    println!("Part 1: {} ({:?})", todo!(), t.elapsed());' \
+        '    println!("Part 1: {:?} ({:?})", part1(&input), t.elapsed());' \
         '' \
         '    let t = Instant::now();' \
-        '    println!("Part 2: {} ({:?})", todo!(), t.elapsed());' \
+        '    println!("Part 2: {:?} ({:?})", part2(&input), t.elapsed());' \
+        '}' \
+        '' \
+        'fn part1(input: &[String]) {' \
+        '    todo!()' \
+        '}' \
+        '' \
+        'fn part2(input: &[String]) {' \
+        '    todo!()' \
         '}' > "$RUST_FILE"
     echo "Created $RUST_FILE"
     

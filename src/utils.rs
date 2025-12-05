@@ -158,6 +158,19 @@ pub fn sections_from_str(content: &str) -> Vec<String> {
     content.split("\n\n").map(|s| s.to_string()).collect()
 }
 
+/// Parses a range string in the format "start-end" and returns a tuple of (start, end).
+///
+/// # Example
+/// ```
+/// let (start, end) = parse_range("1-5");
+/// assert_eq!(start, 1);
+/// assert_eq!(end, 5);
+/// ```
+pub fn parse_range(range: &str) -> (usize, usize) {
+    let (start, end) = range.split_once('-').unwrap();
+    (start.parse().unwrap(), end.parse().unwrap())
+}
+
 /// Reads lines and parses each line as whitespace-separated numbers
 ///
 /// # Example

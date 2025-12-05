@@ -15,7 +15,7 @@ fn part1(input: &[String]) -> usize {
     input
         .iter()
         .map(|range| {
-            let (start, end) = parse_range(range);
+            let (start, end) = utils::parse_range(range);
             sum_even_invalid_ids_for_range(start, end)
         })
         .sum()
@@ -25,15 +25,10 @@ fn part2(input: &[String]) -> usize {
     input
         .iter()
         .map(|range| {
-            let (start, end) = parse_range(range);
+            let (start, end) = utils::parse_range(range);
             sum_all_invalid_ids_for_range(start, end)
         })
         .sum()
-}
-
-fn parse_range(range: &str) -> (usize, usize) {
-    let (start, end) = range.split_once('-').unwrap();
-    (start.parse().unwrap(), end.parse().unwrap())
 }
 
 fn sum_even_invalid_ids_for_range(start: usize, end: usize) -> usize {

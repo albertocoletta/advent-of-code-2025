@@ -130,6 +130,34 @@ pub fn read_sections(path: &str) -> Vec<String> {
         .collect()
 }
 
+// ============================================================================
+// String Parsing Utilities
+// ============================================================================
+
+/// Splits a string into lines and returns them as a Vec<String>
+///
+/// # Example
+/// ```
+/// let content = "line1\nline2\nline3";
+/// let lines = lines_from_str(content);
+/// assert_eq!(lines, vec!["line1", "line2", "line3"]);
+/// ```
+pub fn lines_from_str(content: &str) -> Vec<String> {
+    content.lines().map(|s| s.to_string()).collect()
+}
+
+/// Splits a string by double newlines (useful for sections)
+///
+/// # Example
+/// ```
+/// let content = "section1\ndata1\n\nsection2\ndata2";
+/// let sections = sections_from_str(content);
+/// assert_eq!(sections.len(), 2);
+/// ```
+pub fn sections_from_str(content: &str) -> Vec<String> {
+    content.split("\n\n").map(|s| s.to_string()).collect()
+}
+
 /// Reads lines and parses each line as whitespace-separated numbers
 ///
 /// # Example

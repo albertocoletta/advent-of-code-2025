@@ -44,6 +44,36 @@ impl Coordinate {
             && (self.column as usize) < grid_size.columns
     }
 
+    /// Get the coordinate to the left
+    pub fn left(self) -> Coordinate {
+        Coordinate::new(self.line, self.column - 1)
+    }
+
+    /// Get the coordinate to the right
+    pub fn right(self) -> Coordinate {
+        Coordinate::new(self.line, self.column + 1)
+    }
+
+    /// Get the coordinate above
+    pub fn up(self) -> Coordinate {
+        Coordinate::new(self.line - 1, self.column)
+    }
+
+    /// Get the coordinate below
+    pub fn down(self) -> Coordinate {
+        Coordinate::new(self.line + 1, self.column)
+    }
+
+    /// Get horizontal neighboring coordinates (left, right)
+    pub fn horizontal_neighbors(self) -> [Coordinate; 2] {
+        [self.left(), self.right()]
+    }
+
+    /// Get vertical neighboring coordinates (up, down)
+    pub fn vertical_neighbors(self) -> [Coordinate; 2] {
+        [self.up(), self.down()]
+    }
+
     /// Get neighboring coordinates (up, down, left, right)
     pub fn neighbors_without_diagonals(self) -> [Coordinate; 4] {
         [

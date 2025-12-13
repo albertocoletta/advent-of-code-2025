@@ -232,6 +232,19 @@ where
         .collect()
 }
 
+/// Parses a line containing numbers separated by a custom separator
+///
+/// # Example
+/// ```
+/// let numbers: Vec<u32> = parse_numbers_sep("1,2,3,4,5", ",");
+/// let numbers: Vec<i32> = parse_numbers_sep("10|20|30", "|");
+/// ```
+pub fn parse_numbers_sep<T: FromStr>(line: &str, sep: &str) -> Vec<T> {
+    line.split(sep)
+        .map(|n| n.trim().parse::<T>().ok().unwrap())
+        .collect()
+}
+
 /// Reads a single line from a file and parses it as strings separated by a custom separator
 ///
 /// # Example

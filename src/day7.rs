@@ -50,7 +50,7 @@ fn part1_and_2(input: &[String]) -> (usize, usize) {
     let last_row = (input.len() - 1) as i32;
     let total_timelines: usize = counts
         .iter()
-        .filter(|(coord, _)| coord.line == last_row)
+        .filter(|(coord, _)| coord.row == last_row)
         .map(|(_, &count)| count)
         .sum();
 

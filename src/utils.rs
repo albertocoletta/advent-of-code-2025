@@ -9,59 +9,59 @@ use std::str::FromStr;
 
 #[derive(Clone, Debug, PartialEq, Eq, Hash, Copy)]
 pub struct Coordinate {
-    pub line: i32,
+    pub row: i32,
     pub column: i32,
 }
 
 impl Coordinate {
-    pub fn new(line: i32, column: i32) -> Self {
-        Self { line, column }
+    pub fn new(row: i32, column: i32) -> Self {
+        Self { row, column }
     }
 
     pub fn add(self, other: Coordinate) -> Coordinate {
         Coordinate {
-            line: self.line + other.line,
+            row: self.row + other.row,
             column: self.column + other.column,
         }
     }
 
     pub fn subtract(self, other: Coordinate) -> Coordinate {
         Coordinate {
-            line: self.line - other.line,
+            row: self.row - other.row,
             column: self.column - other.column,
         }
     }
 
     pub fn manhattan_distance(self, other: Coordinate) -> u32 {
-        ((self.line - other.line).abs() + (self.column - other.column).abs()) as u32
+        ((self.row - other.row).abs() + (self.column - other.column).abs()) as u32
     }
 
     /// Check if coordinate is within grid bounds
     pub fn is_in_bounds(self, grid_size: GridSize) -> bool {
-        self.line >= 0
+        self.row >= 0
             && self.column >= 0
-            && (self.line as usize) < grid_size.lines
+            && (self.row as usize) < grid_size.lines
             && (self.column as usize) < grid_size.columns
     }
 
     /// Get the coordinate to the left
     pub fn left(self) -> Coordinate {
-        Coordinate::new(self.line, self.column - 1)
+        Coordinate::new(self.row, self.column - 1)
     }
 
     /// Get the coordinate to the right
     pub fn right(self) -> Coordinate {
-        Coordinate::new(self.line, self.column + 1)
+        Coordinate::new(self.row, self.column + 1)
     }
 
     /// Get the coordinate above
     pub fn up(self) -> Coordinate {
-        Coordinate::new(self.line - 1, self.column)
+        Coordinate::new(self.row - 1, self.column)
     }
 
     /// Get the coordinate below
     pub fn down(self) -> Coordinate {
-        Coordinate::new(self.line + 1, self.column)
+        Coordinate::new(self.row + 1, self.column)
     }
 
     /// Get horizontal neighboring coordinates (left, right)
@@ -77,24 +77,24 @@ impl Coordinate {
     /// Get neighboring coordinates (up, down, left, right)
     pub fn neighbors_without_diagonals(self) -> [Coordinate; 4] {
         [
-            Coordinate::new(self.line - 1, self.column), // up
-            Coordinate::new(self.line + 1, self.column), // down
-            Coordinate::new(self.line, self.column - 1), // left
-            Coordinate::new(self.line, self.column + 1), // right
+            Coordinate::new(self.row - 1, self.column), // up
+            Coordinate::new(self.row + 1, self.column), // down
+            Coordinate::new(self.row, self.column - 1), // left
+            Coordinate::new(self.row, self.column + 1), // right
         ]
     }
 
     /// Get all 8 neighboring coordinates (including diagonals)
     pub fn neighbors_with_diagonals(self) -> [Coordinate; 8] {
         [
-            Coordinate::new(self.line - 1, self.column),     // up
-            Coordinate::new(self.line + 1, self.column),     // down
-            Coordinate::new(self.line, self.column - 1),     // left
-            Coordinate::new(self.line, self.column + 1),     // right
-            Coordinate::new(self.line - 1, self.column - 1), // up-left
-            Coordinate::new(self.line - 1, self.column + 1), // up-right
-            Coordinate::new(self.line + 1, self.column - 1), // down-left
-            Coordinate::new(self.line + 1, self.column + 1), // down-right
+            Coordinate::new(self.row - 1, self.column),     // up
+            Coordinate::new(self.row + 1, self.column),     // down
+            Coordinate::new(self.row, self.column - 1),     // left
+            Coordinate::new(self.row, self.column + 1),     // right
+            Coordinate::new(self.row - 1, self.column - 1), // up-left
+            Coordinate::new(self.row - 1, self.column + 1), // up-right
+            Coordinate::new(self.row + 1, self.column - 1), // down-left
+            Coordinate::new(self.row + 1, self.column + 1), // down-right
         ]
     }
 }

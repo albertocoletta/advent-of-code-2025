@@ -21,7 +21,7 @@ fn part1_and_2(input: &[String]) -> (usize, usize) {
     let mut counts: HashMap<Coordinate, usize> = HashMap::new();
     for (line_idx, line) in input.iter().enumerate() {
         for (col_idx, ch) in line.char_indices() {
-            let current_coord = Coordinate::new(line_idx as i32, col_idx as i32);
+            let current_coord = Coordinate::new(line_idx as isize, col_idx as isize);
             match ch {
                 'S' => {
                     let new_beam = current_coord.down();
@@ -47,7 +47,7 @@ fn part1_and_2(input: &[String]) -> (usize, usize) {
         }
     }
 
-    let last_row = (input.len() - 1) as i32;
+    let last_row = (input.len() - 1) as isize;
     let total_timelines: usize = counts
         .iter()
         .filter(|(coord, _)| coord.row == last_row)

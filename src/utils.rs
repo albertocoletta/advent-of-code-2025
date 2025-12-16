@@ -9,12 +9,12 @@ use std::str::FromStr;
 
 #[derive(Clone, Debug, PartialEq, Eq, Hash, Copy)]
 pub struct Coordinate {
-    pub row: i32,
-    pub column: i32,
+    pub row: isize,
+    pub column: isize,
 }
 
 impl Coordinate {
-    pub fn new(row: i32, column: i32) -> Self {
+    pub fn new(row: isize, column: isize) -> Self {
         Self { row, column }
     }
 
@@ -32,8 +32,8 @@ impl Coordinate {
         }
     }
 
-    pub fn manhattan_distance(self, other: Coordinate) -> u32 {
-        ((self.row - other.row).abs() + (self.column - other.column).abs()) as u32
+    pub fn manhattan_distance(self, other: Coordinate) -> usize {
+        ((self.row - other.row).abs() + (self.column - other.column).abs()) as usize
     }
 
     /// Check if coordinate is within grid bounds
@@ -281,7 +281,7 @@ pub fn read_char_grid(path: &str) -> (HashMap<Coordinate, char>, GridSize) {
 
     for (row, line) in lines.iter().enumerate() {
         for (col, ch) in line.chars().enumerate() {
-            grid.insert(Coordinate::new(row as i32, col as i32), ch);
+            grid.insert(Coordinate::new(row as isize, col as isize), ch);
         }
     }
 
@@ -306,7 +306,7 @@ pub fn read_digit_grid(path: &str) -> (HashMap<Coordinate, u32>, GridSize) {
     for (row, line) in lines.iter().enumerate() {
         for (col, ch) in line.chars().enumerate() {
             let digit = ch.to_digit(10).expect("Failed to parse digit");
-            grid.insert(Coordinate::new(row as i32, col as i32), digit);
+            grid.insert(Coordinate::new(row as isize, col as isize), digit);
         }
     }
 

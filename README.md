@@ -8,7 +8,7 @@ All solutions, instead, are written by me.
 
 ## Blog post
 
-TBA
+https://writingdeveloper.com/posts/advent-of-code-2025/
 
 ### Adding a New Day
 
